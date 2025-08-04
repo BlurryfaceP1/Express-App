@@ -7,6 +7,13 @@ app.get('/', (req,res)=>{
     res.render("index")
 });
 
+app.get("/users", (req,res)=>{
+    res.send("USER LIST")
+});
+app.get("/users/new", (req,res)=>{
+    res.send("New user form")
+});
+
 app.listen(3000, ()=>{
     console.log("Listening on port 3000")
 })
