@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const multer = require("multer");
 const pdf = require("pdf-parse");
+require("dotenv").config(); // Load environment variables
 const app = express();
 
 // Set EJS as view engine
@@ -9,15 +10,16 @@ app.set("view engine", "ejs");
 
 // Connect to MongoDB Atlas
 mongoose
-  .connect("mongodb+srv://prathmeshwmc:prathmeshwmc@cluster0.6qqkaaz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 30000,
-    socketTimeoutMS: 45000,
+    serverSelectionTimeoutMS: 60000,
+    socketTimeoutMS: 90000,
   })
-  .then(() => console.log("Connected to MongoDB Atlas"))
+  .THEN(() => console.log("Connected to MongoDB Atlas"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
+// ... (rest of the code remains unchanged, including GridFS, routes, etc.)
 // Initialize GridFSBucket
 let gridfsBucket;
 mongoose.connection.once("open", () => {
