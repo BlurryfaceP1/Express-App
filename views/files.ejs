@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Uploaded Files</title>
+</head>
+<body>
+  <h1>Uploaded Files</h1>
+  <ul>
+    <% files.forEach(file => { %>
+      <li>
+        <a href="/file/<%= file._id %>"><%= file.filename %></a>
+        <a href="/file/<%= file._id %>/text">(View Text)</a>
+      </li>
+    <% }) %>
+  </ul>
+  <a href="/">Back to Upload</a>
+</body>
+</html>
